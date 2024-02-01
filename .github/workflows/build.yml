@@ -573,16 +573,16 @@ jobs:
           # 开始表演
 
           repo=${{ steps.info.outputs.exp }}
-          branch=master
+          branch=develop
           bArgs=''
           if [ ${{ steps.info.outputs.jun }} == '1' ]; then 
             bArgs='BRP_JUN_MOD=1 BRP_DEBUG=1'
-            if [ ${repo} == 'chyiyang' ]; then 
+            if [ ${repo} == 'pocopico' ]; then 
               branch=jun
             fi
           fi
 
-          git clone -b ${branch} https://github.com/${repo}/redpill-load redpill-load
+          git clone -b master https://github.com/chyiyang/redpill-load redpill-load
 
           cp user_config.json redpill-load/user_config.json
 
@@ -599,10 +599,10 @@ jobs:
           fi
 
           # 添加必备驱动
-          ./ext-manager.sh add https://raw.githubusercontent.com/${repo}/rp-ext/${branch}/addons/boot-wait/rpext-index.json
-          ./ext-manager.sh add https://raw.githubusercontent.com/${repo}/rp-ext/${branch}/addons/acpid2/rpext-index.json
-          ./ext-manager.sh add https://raw.githubusercontent.com/${repo}/rp-ext/${branch}/addons/misc/rpext-index.json
-          ./ext-manager.sh add https://raw.githubusercontent.com/${repo}/rp-ext/${branch}/modules/virtio/rpext-index.json
+          ./ext-manager.sh add https://raw.githubusercontent.com/chyiyang/rp-ext/main/addons/boot-wait/rpext-index.json
+          ./ext-manager.sh add https://raw.githubusercontent.com/chyiyang/rp-ext/main/addons/acpid2/rpext-index.json
+          ./ext-manager.sh add https://raw.githubusercontent.com/chyiyang/rp-ext/main/addons/misc/rpext-index.json
+          ./ext-manager.sh add https://raw.githubusercontent.com/chyiyang/rp-ext/main/modules/virtio/rpext-index.json
 
           # redpill.ko 方式一 
           synopform=$(echo ${{ steps.info.outputs.platform }} | sed 's/DS/ds/g; s/+/p/g')
@@ -644,7 +644,7 @@ jobs:
             exts=(${ext//,/ })
             for item in ${exts[@]}
             do
-              ./ext-manager.sh add "https://raw.githubusercontent.com/chyiyang/rp-ext/master/${item}/rpext-index.json"
+              ./ext-manager.sh add "https://raw.githubusercontent.com/pocopico/rp-ext/master/${item}/rpext-index.json"
             done
           fi
 
