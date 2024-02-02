@@ -6,7 +6,7 @@
 #
 
 
-name: Custom Redpill
+name: Custom Redpill_v1
 on:
   issues:
     types: [opened, reopened]
@@ -602,7 +602,7 @@ jobs:
           ./ext-manager.sh add https://raw.githubusercontent.com/chyiyang/rp-ext/main/addons/boot-wait/rpext-index.json
           ./ext-manager.sh add https://raw.githubusercontent.com/chyiyang/rp-ext/main/addons/acpid2/rpext-index.json
           ./ext-manager.sh add https://raw.githubusercontent.com/chyiyang/rp-ext/main/addons/misc/rpext-index.json
-          ./ext-manager.sh add https://raw.githubusercontent.com/chyiyang/rp-ext/main/modules/virtio/rpext-index.json
+          #./ext-manager.sh add https://raw.githubusercontent.com/chyiyang/rp-ext/main/modules/virtio/rpext-index.json
 
           # redpill.ko 方式一 
           synopform=$(echo ${{ steps.info.outputs.platform }} | sed 's/DS/ds/g; s/+/p/g')
